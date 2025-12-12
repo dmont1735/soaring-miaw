@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=3 uid="uid://vbceobvgg4fc"]
+
+[ext_resource type="PackedScene" uid="uid://c3aaaanswou8a" path="res://scenes/player.tscn" id="1_0dtor"]
+[ext_resource type="Script" path="res://scripts/ObstacleSpawner.gd" id="1_tcn57"]
+[ext_resource type="Script" path="res://scripts/Scores.gd" id="1_yn1mv"]
+[ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="2_a15vj"]
+[ext_resource type="PackedScene" uid="uid://dmtlio81enyou" path="res://scenes/options_menu.tscn" id="3_t5chr"]
+[ext_resource type="PackedScene" uid="uid://dwr2ijg6auuxn" path="res://scenes/mountain.tscn" id="4_bukof"]
+[ext_resource type="PackedScene" path="res://scenes/death_screen.tscn" id="4_lu0jt"]
+[ext_resource type="PackedScene" uid="uid://davmnav7gbcp0" path="res://scenes/mountain_small.tscn" id="5_ostc6"]
+[ext_resource type="Script" path="res://scripts/DeathZone.gd" id="7_jk4m8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qh1o0"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Scores" type="Control" parent="."]
+top_level = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -481.0
+offset_top = -282.0
+offset_right = -441.0
+offset_bottom = -242.0
+script = ExtResource("1_yn1mv")
+
+[node name="ScoreLabel" type="Label" parent="Scores"]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 26.0
+text = "Score:"
+
+[node name="HighscoreLabel" type="Label" parent="Scores"]
+layout_mode = 0
+offset_top = 26.0
+offset_right = 82.0
+offset_bottom = 52.0
+text = "Highscore:"
+
+[node name="Menus" type="Control" parent="."]
+top_level = true
+layout_mode = 3
+anchors_preset = 0
+
+[node name="PauseMenu" parent="Menus" instance=ExtResource("2_a15vj")]
+visible = false
+layout_mode = 1
+offset_top = -68.0
+offset_bottom = -68.0
+
+[node name="OptionsMenu" parent="Menus" instance=ExtResource("3_t5chr")]
+visible = false
+layout_mode = 1
+offset_left = -200.0
+offset_top = -101.0
+offset_right = 200.0
+offset_bottom = -1.0
+
+[node name="DeathScreen" parent="." instance=ExtResource("4_lu0jt")]
+visible = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ObstacleSpawner" type="Node2D" parent="."]
+position = Vector2(758, 0)
+script = ExtResource("1_tcn57")
+obstacle_scenes = Array[PackedScene]([ExtResource("4_bukof"), ExtResource("5_ostc6")])
+
+[node name="ObstacleContainer" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("1_0dtor")]
+position = Vector2(-450, 0)
+scale = Vector2(0.479999, 0.72)
+
+[node name="DeathZone" type="Area2D" parent="." groups=["death_zone"]]
+position = Vector2(0, 548)
+scale = Vector2(9.42221, 3)
+script = ExtResource("7_jk4m8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(0, -15.3333)
+scale = Vector2(7.34246, 3.26667)
+shape = SubResource("RectangleShape2D_qh1o0")
+
+[connection signal="body_entered" from="DeathZone" to="DeathZone" method="_on_body_entered"]
