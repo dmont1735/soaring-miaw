@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6n8m0ao2y5a6"]
+
+[ext_resource type="Script" path="res://scripts/ObstacleMovement.gd" id="1_le3v6"]
+[ext_resource type="Texture2D" uid="uid://dl1qymg0dsyy4" path="res://assets/tree_1.png" id="2_cwqrw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ttg40"]
+size = Vector2(63, 33.0827)
+
+[node name="Tree" type="AnimatableBody2D" groups=["obstacles"]]
+position = Vector2(0, 81)
+scale = Vector2(1, 1.48)
+sync_to_physics = false
+script = ExtResource("1_le3v6")
+metadata/move_speed = 250.0
+metadata/type = "lower"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -105.305)
+scale = Vector2(0.226402, 0.190377)
+texture = ExtResource("2_cwqrw")
+
+[node name="Hitbox" type="Area2D" parent="." groups=["obstacle_hitbox"]]
+position = Vector2(0, 52.8035)
+scale = Vector2(1, 3.24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-3.5, -34.7977)
+shape = SubResource("RectangleShape2D_ttg40")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -12.8378)
+scale = Vector2(6.52, 10.28)
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

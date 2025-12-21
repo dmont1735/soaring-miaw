@@ -2,7 +2,7 @@ extends Node2D
 
 @export var obstacle_scenes : Array[PackedScene]
 @export var move_speed := 250.0
-@export var lower_start_y := 400.0
+@export var lower_start_y := 730.0
 @export var higher_start_y := 0.0
 @onready var obstacle_container := $"../ObstacleContainer"
 var speed_ramp := 1.0
@@ -16,7 +16,7 @@ func spawn_obstacle():
 
 	var scene = obstacle_scenes.pick_random()
 	var obstacle = scene.instantiate()
-	var spawning_position= Vector2(global_position.x, lower_start_y)
+	var spawning_position = Vector2(global_position.x, lower_start_y)
 	
 	obstacle.set_meta("move_speed", move_speed * speed_ramp)
 	obstacle.position = spawning_position

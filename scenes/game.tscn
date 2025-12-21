@@ -1,16 +1,30 @@
-[gd_scene load_steps=11 format=3 uid="uid://vbceobvgg4fc"]
+[gd_scene load_steps=22 format=3 uid="uid://vbceobvgg4fc"]
 
 [ext_resource type="PackedScene" uid="uid://c3aaaanswou8a" path="res://scenes/player.tscn" id="1_0dtor"]
 [ext_resource type="Script" path="res://scripts/ObstacleSpawner.gd" id="1_tcn57"]
 [ext_resource type="Script" path="res://scripts/Scores.gd" id="1_yn1mv"]
 [ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="2_a15vj"]
 [ext_resource type="PackedScene" uid="uid://dmtlio81enyou" path="res://scenes/options_menu.tscn" id="3_t5chr"]
-[ext_resource type="PackedScene" uid="uid://dwr2ijg6auuxn" path="res://scenes/mountain.tscn" id="4_bukof"]
-[ext_resource type="PackedScene" path="res://scenes/death_screen.tscn" id="4_lu0jt"]
-[ext_resource type="PackedScene" uid="uid://davmnav7gbcp0" path="res://scenes/mountain_small.tscn" id="5_ostc6"]
+[ext_resource type="PackedScene" uid="uid://binwiarx4uknu" path="res://scenes/death_screen.tscn" id="4_lu0jt"]
+[ext_resource type="PackedScene" uid="uid://ckfescr4wwe6x" path="res://scenes/tree_0.tscn" id="6_jpukr"]
+[ext_resource type="PackedScene" uid="uid://b6n8m0ao2y5a6" path="res://scenes/tree_1.tscn" id="7_c6eqh"]
 [ext_resource type="Script" path="res://scripts/DeathZone.gd" id="7_jk4m8"]
+[ext_resource type="PackedScene" uid="uid://5bdbnw16s8ui" path="res://scenes/tree_2.tscn" id="8_jtwfp"]
+[ext_resource type="PackedScene" uid="uid://c0atwjusbuwr3" path="res://scenes/tree_3.tscn" id="9_jiii0"]
+[ext_resource type="PackedScene" uid="uid://cbdcalhyj8wvt" path="res://scenes/tree_4.tscn" id="10_sbfec"]
+[ext_resource type="PackedScene" uid="uid://c3hft753xfnn0" path="res://scenes/tree_5.tscn" id="11_nfyyw"]
+[ext_resource type="Texture2D" uid="uid://dvhec5fq1677f" path="res://assets/sky.png" id="15_qco5v"]
+[ext_resource type="Script" path="res://scripts/ParallaxBackground.gd" id="15_txik6"]
+[ext_resource type="Texture2D" uid="uid://dskrgbnl0ttlp" path="res://assets/sky_4.png" id="16_71w6u"]
+[ext_resource type="Texture2D" uid="uid://esg2c76l1csq" path="res://assets/sky_3.png" id="17_blpts"]
+[ext_resource type="Texture2D" uid="uid://cqf36qlyjn1yo" path="res://assets/sky_1.png" id="18_d0m4h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qh1o0"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3ov2p"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xi2sd"]
 
 [node name="Game" type="Node2D"]
 
@@ -18,16 +32,17 @@
 top_level = true
 layout_mode = 3
 anchors_preset = 0
-offset_left = -481.0
-offset_top = -282.0
-offset_right = -441.0
-offset_bottom = -242.0
+offset_left = 93.0
+offset_top = 129.0
+offset_right = 133.0
+offset_bottom = 169.0
 script = ExtResource("1_yn1mv")
 
 [node name="ScoreLabel" type="Label" parent="Scores"]
 layout_mode = 0
 offset_right = 48.0
 offset_bottom = 26.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Score:"
 
 [node name="HighscoreLabel" type="Label" parent="Scores"]
@@ -35,12 +50,17 @@ layout_mode = 0
 offset_top = 26.0
 offset_right = 82.0
 offset_bottom = 52.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Highscore:"
 
 [node name="Menus" type="Control" parent="."]
 top_level = true
 layout_mode = 3
 anchors_preset = 0
+offset_left = 580.0
+offset_top = 379.0
+offset_right = 580.0
+offset_bottom = 379.0
 
 [node name="PauseMenu" parent="Menus" instance=ExtResource("2_a15vj")]
 visible = false
@@ -58,22 +78,23 @@ offset_bottom = -1.0
 
 [node name="DeathScreen" parent="." instance=ExtResource("4_lu0jt")]
 visible = false
-
-[node name="Camera2D" type="Camera2D" parent="."]
+offset_left = -89.0
+offset_top = 24.0
+offset_right = -89.0
+offset_bottom = 24.0
 
 [node name="ObstacleSpawner" type="Node2D" parent="."]
-position = Vector2(758, 0)
+position = Vector2(1400, 0)
 script = ExtResource("1_tcn57")
-obstacle_scenes = Array[PackedScene]([ExtResource("4_bukof"), ExtResource("5_ostc6")])
+obstacle_scenes = Array[PackedScene]([ExtResource("6_jpukr"), ExtResource("7_c6eqh"), ExtResource("8_jtwfp"), ExtResource("9_jiii0"), ExtResource("10_sbfec"), ExtResource("11_nfyyw")])
 
 [node name="ObstacleContainer" type="Node2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("1_0dtor")]
-position = Vector2(-450, 0)
-scale = Vector2(0.479999, 0.72)
+position = Vector2(197, 417)
 
 [node name="DeathZone" type="Area2D" parent="." groups=["death_zone"]]
-position = Vector2(0, 548)
+position = Vector2(546, 864)
 scale = Vector2(9.42221, 3)
 script = ExtResource("7_jk4m8")
 
@@ -81,5 +102,63 @@ script = ExtResource("7_jk4m8")
 position = Vector2(0, -15.3333)
 scale = Vector2(7.34246, 3.26667)
 shape = SubResource("RectangleShape2D_qh1o0")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("15_txik6")
+
+[node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(0, 337)
+motion_mirroring = Vector2(1080, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky"]
+position = Vector2(540, 24)
+texture = ExtResource("15_qco5v")
+
+[node name="Sky_far" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(0, 337)
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(1080, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky_far"]
+modulate = Color(1, 1, 1, 0.588235)
+texture_repeat = 2
+texture = ExtResource("16_71w6u")
+
+[node name="Sky_closer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(0, 337)
+motion_scale = Vector2(0.4, 0.4)
+motion_mirroring = Vector2(1080, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky_closer"]
+modulate = Color(1, 1, 1, 0.588235)
+texture_repeat = 2
+texture = ExtResource("17_blpts")
+offset = Vector2(150, -200)
+flip_v = true
+
+[node name="Sky_closest" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(0, 337)
+motion_scale = Vector2(0.6, 0.6)
+motion_mirroring = Vector2(1080, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky_closest"]
+modulate = Color(1, 1, 1, 0.784314)
+texture_repeat = 2
+position = Vector2(-189, 334)
+texture = ExtResource("18_d0m4h")
+offset = Vector2(-100, 50)
+
+[node name="Ceiling" type="StaticBody2D" parent="."]
+position = Vector2(0, -28)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling"]
+position = Vector2(0, -42)
+shape = SubResource("WorldBoundaryShape2D_3ov2p")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(0, 725)
+shape = SubResource("WorldBoundaryShape2D_xi2sd")
 
 [connection signal="body_entered" from="DeathZone" to="DeathZone" method="_on_body_entered"]
