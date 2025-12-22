@@ -1,24 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://dqidlwxnnsln2"]
+[gd_scene load_steps=7 format=3 uid="uid://b4p8i20c20f4i"]
 
-[ext_resource type="Script" path="res://scripts/ObstacleMovement.gd" id="1_axayy"]
-[ext_resource type="Texture2D" uid="uid://bbrybjh7iyb1s" path="res://assets/bird_0.png" id="2_jwnso"]
+[ext_resource type="Script" path="res://scripts/ObstacleMovement.gd" id="1_40w4y"]
+[ext_resource type="Texture2D" uid="uid://dmuwkcgpyhj8w" path="res://assets/bird_3.png" id="2_52jtu"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0i4il"]
-atlas = ExtResource("2_jwnso")
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vvkd"]
+atlas = ExtResource("2_52jtu")
 region = Rect2(720, 0, 720, 1080)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xhlso"]
-atlas = ExtResource("2_jwnso")
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7ody"]
+atlas = ExtResource("2_52jtu")
 region = Rect2(0, 0, 720, 1080)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_75y21"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_vuu6u"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0i4il")
+"texture": SubResource("AtlasTexture_4vvkd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xhlso")
+"texture": SubResource("AtlasTexture_w7ody")
 }],
 "loop": true,
 "name": &"flap",
@@ -32,15 +32,17 @@ size = Vector2(163, 14.3894)
 position = Vector2(0, 81)
 scale = Vector2(0.5, 0.74)
 sync_to_physics = false
-script = ExtResource("1_axayy")
+script = ExtResource("1_40w4y")
 metadata/move_speed = 250.0
 metadata/type = "higher"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -79.054)
 scale = Vector2(0.289817, 0.196894)
-sprite_frames = SubResource("SpriteFrames_75y21")
+sprite_frames = SubResource("SpriteFrames_vuu6u")
 animation = &"flap"
+frame = 1
+frame_progress = 0.622946
 
 [node name="Hitbox" type="Area2D" parent="." groups=["obstacle_hitbox"]]
 position = Vector2(0, 52.8035)

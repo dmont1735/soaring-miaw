@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://1q4sm0gn47jm" path="res://assets/kitty.png" id="2_axt5m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s2arw"]
-size = Vector2(27.9221, 20.457)
+size = Vector2(19.0112, 13.6751)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j1t5p"]
 atlas = ExtResource("2_axt5m")
@@ -71,7 +71,7 @@ scale = Vector2(1.15277, 1.15277)
 script = ExtResource("1_meqqy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(-4, -60.7651)
+position = Vector2(-9.97595, -39.4701)
 scale = Vector2(6.16, 6.28)
 shape = SubResource("RectangleShape2D_s2arw")
 
@@ -81,3 +81,5 @@ rotation = 0.128486
 scale = Vector2(0.171361, 0.171361)
 sprite_frames = SubResource("SpriteFrames_4gt8h")
 animation = &"boost"
+frame = 3
+frame_progress = 1.0

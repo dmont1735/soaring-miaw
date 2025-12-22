@@ -4,9 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://d0i4aj2hj3tfg" path="res://assets/tree_0.png" id="2_qf1qe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ttg40"]
-size = Vector2(205, 19.9601)
+size = Vector2(163, 14.3894)
 
 [node name="Tree" type="AnimatableBody2D" groups=["obstacles"]]
+z_as_relative = false
 position = Vector2(0, 81)
 scale = Vector2(1, 1.48)
 sync_to_physics = false
@@ -15,6 +16,8 @@ metadata/move_speed = 250.0
 metadata/type = "lower"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+z_as_relative = false
 position = Vector2(0, -105.305)
 scale = Vector2(0.226402, 0.190377)
 texture = ExtResource("2_qf1qe")
