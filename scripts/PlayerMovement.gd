@@ -43,4 +43,3 @@ func die():
 	player_died.emit()
 
 	# Reset game, play animation, etc…
-

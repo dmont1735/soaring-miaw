@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c3aaaanswou8a" path="res://scenes/player.tscn" id="1_0dtor"]
 [ext_resource type="Script" path="res://scripts/ObstacleSpawner.gd" id="1_tcn57"]
 [ext_resource type="Script" path="res://scripts/Scores.gd" id="1_yn1mv"]
-[ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="2_a15vj"]
+[ext_resource type="PackedScene" uid="uid://tg2jd2q4pkh1" path="res://scenes/pause_menu.tscn" id="2_a15vj"]
 [ext_resource type="PackedScene" uid="uid://dmtlio81enyou" path="res://scenes/options_menu.tscn" id="3_t5chr"]
 [ext_resource type="PackedScene" uid="uid://binwiarx4uknu" path="res://scenes/death_screen.tscn" id="4_lu0jt"]
 [ext_resource type="PackedScene" uid="uid://ckfescr4wwe6x" path="res://scenes/tree_0.tscn" id="6_jpukr"]
@@ -140,16 +140,18 @@ offset_bottom = 379.0
 [node name="PauseMenu" parent="Menus" instance=ExtResource("2_a15vj")]
 visible = false
 layout_mode = 1
-offset_top = -68.0
-offset_bottom = -68.0
+offset_left = -81.0
+offset_top = -130.0
+offset_right = -81.0
+offset_bottom = -130.0
 
 [node name="OptionsMenu" parent="Menus" instance=ExtResource("3_t5chr")]
 visible = false
 layout_mode = 1
-offset_left = -200.0
-offset_top = -101.0
-offset_right = 200.0
-offset_bottom = -1.0
+offset_left = -250.0
+offset_top = -180.0
+offset_right = 150.0
+offset_bottom = -80.0
 
 [node name="DeathScreen" parent="." instance=ExtResource("4_lu0jt")]
 visible = false

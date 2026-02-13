@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://u2xkiaktnp1a"]
+[gd_scene load_steps=2 format=3 uid="uid://tg2jd2q4pkh1"]
 
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_aqwvu"]
 
@@ -37,6 +37,7 @@ layout_mode = 2
 text = "Main Menu"
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Quit"
 
